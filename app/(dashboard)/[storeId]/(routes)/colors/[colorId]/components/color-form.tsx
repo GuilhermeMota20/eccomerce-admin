@@ -18,7 +18,7 @@ import { z } from "zod";
 
 const formSchema = z.object({
   name: z.string().min(1),
-  value: z.string().min(4).regex(/^#/, {
+  value: z.string().min(4).max(7).regex(/^#/, {
     message: "String must be a valid hex code",
   }),
 });
@@ -156,7 +156,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
                   <FormControl>
                     <div className="flex items-center gap-x-4">
                       <Input
-                        placeholder="Color value"
+                        placeholder="Color value: #000000"
                         disabled={loading}
                         {...field}
                       />
