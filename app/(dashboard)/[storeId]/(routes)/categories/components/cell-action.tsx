@@ -31,23 +31,23 @@ export const CellAction: React.FC<CellActionProps> = ({
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Billboard ID copied to the clipboard");
+    toast.success("Category ID copied to the clipboard");
   };
 
   const onRedirectUpload = (id: string) => {
-    router.push(`/${params.storeId}/billboards/${id}`);
+    router.push(`/${params.storeId}/categories/${id}`);
   };
 
   const onDelete = async () => {
     try {
       setLoading(true);
 
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
       router.refresh();
-      toast.success("Billboard deleted.");
+      toast.success("Category deleted.");
 
     } catch (err) {
-      toast.error("Make sure you removed all categories using this billboard first.");
+      toast.error("Make sure you removed all products using this category first.");
     } finally {
       setLoading(false);
       setOpen(false);
